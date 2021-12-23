@@ -1,0 +1,12 @@
+.condition img {
+    display: flex;
+    flex-direction: column;
+    width: 10px;
+    height: auto;
+    padding: 20px;
+}
+
+.image {
+    width: 10px;
+    height: 10px;
+}
