@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import Welcome from '../assets/Welcome.png'
+// import Welcome from '../assets/Welcome.png'
 // import ClearSky from '../assets/ClearSky.png'
-// import FewClouds from '../assets/FewClouds.png'
-// import Mist from '../assets/Mist.png'
+// import Rain from '../assets/Rain.png'
+// import ThunderStorm from '../assets/ThunderStorm.png'
+// import Snow from '../assets/Snow.png'
 
 const api = {
     key: "e4ab7a9a1bdc079756fc521bf013c8eb",
@@ -14,6 +15,8 @@ function Weather() {
     const[query, setQuery] = useState("");
     const[weather, setWeather] = useState({});
 
+    let weatherImage;
+
     const search = evt => {
         if(evt.key === "Enter"){
             fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
@@ -21,7 +24,7 @@ function Weather() {
             .then(result => {
                 setWeather(result)
                 setQuery("");
-                console.log(result);
+                console.log(weatherImage);
             });
         }
     }
@@ -36,6 +39,32 @@ function Weather() {
         let year = d.getFullYear();
 
         return `${day} ${date} ${month} ${year}`
+    }
+
+    
+    if(typeof weather.main != "undefined"){
+        if(weather.weather[0].main === "Clouds"){
+            let ClearSky = <img src={require("../assets/ClearSky.png")} alt="header" />
+            weatherImage = ClearSky
+        }else if(weather.weather[0].main === "Thunderstorm"){
+            let ThunderStorm = <img src={require("../assets/ThunderStorm.png")} alt="header" />
+            weatherImage = ThunderStorm
+        }else if(weather.weather[0].main === "Drizzle"){
+            let Rain = <img src={require("../assets/Rain.png")} alt="header" />
+            weatherImage = Rain
+        }else if(weather.weather[0].main === "Rain"){
+            let Rain = <img src={require("../assets/Rain.png")} alt="header" />
+            weatherImage = Rain
+        }else if(weather.weather[0].main === "Snow"){
+            let Snow = <img src={require("../assets/Snow.png")} alt="header" />
+            weatherImage = Snow
+        }else{
+            let Welcome = <img src={require("../assets/welcome.png")} alt="header" />
+            weatherImage = Welcome
+        }
+    }else{
+        let Welcome = <img src={require("../assets/welcome.png")} alt="header" />
+            weatherImage = Welcome
     }
 
     
@@ -73,9 +102,7 @@ function Weather() {
                 ): ("")}
             </main>
             <div className="condition">
-                <img className='image'
-                src={ Welcome }
-                alt="Weather condition" />
+                {weatherImage}
             </div>
         </div>
     )
