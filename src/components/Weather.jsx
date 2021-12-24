@@ -72,13 +72,13 @@ function Weather() {
     
 
     return(
-        <div>
-            <main>
+        <div className='weather-container'>
+            <div className='information'>
                 <div>
                     <input 
                         type="text" 
                         className='search-bar'
-                        placeholder="Search..."
+                        placeholder="Search city..."
                         onChange={e => setQuery(e.target.value)}
                         value={query}
                         onKeyPress={search}
@@ -86,23 +86,27 @@ function Weather() {
                 </div>
                 {(typeof weather.main != "undefined") ? (
                 <div>
-                <div>
-                    <div>{weather.name}, {weather.sys.country}</div>
-                    <div> {dateBuilder(new Date())} </div>
-                </div>
-                <div>
-                    <div>
-                        {Math.round(weather.main.temp)}°c
+                    <div className='information-container'>
+                    <p className='location'>
+                    {weather.name}, {weather.sys.country}
+                    </p>
+                    <h1 className='degree'>
+                    {Math.round(weather.main.temp)}°c
+                    </h1>
+                    <div className='divider'></div>
+                    <p className='weather-condition'>
+                    {weather.weather[0].main}
+                    </p>
+                    <div className='divider'></div>
                     </div>
-                    <div>
-                        {weather.weather[0].main}
-                    </div>
-                </div>
                 </div>
                 ): ("")}
-            </main>
-            <div className="condition">
+            <div className="condition-image">
                 {weatherImage}
+            </div>
+            <div>
+                <p>{dateBuilder(new Date())}</p>
+            </div>
             </div>
         </div>
     )
