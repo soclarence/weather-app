@@ -1,12 +1,97 @@
-.condition img {
-    display: flex;
-    flex-direction: column;
-    width: 10px;
-    height: auto;
-    padding: 20px;
+body {
+    background-color: blanchedalmond;
+    font-family: 'IBM Plex Sans', sans-serif;
+    height: 100%;
 }
 
-.image {
-    width: 10px;
-    height: 10px;
+
+
+img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 20px;
+}
+
+.weather-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+
+.information {
+    border: solid;
+    border-radius: 10px;
+    padding: 25px;
+    
+}
+
+input {
+    background-color: blanchedalmond;
+    height: 30px;
+    width: 300px;
+    border-bottom: solid;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom-width: 1px;
+}
+
+.degree{
+    font-size: 500%;
+    font-weight: 400;
+}
+
+.location {
+    margin-top: 30px;
+    font-size: 90%;
+    font-weight: 400;
+    margin-bottom: -60px;
+}
+
+.weather-condition {
+    font-size: 90%;
+    font-weight: 400;
+}
+
+.divider{
+    border-bottom: solid;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom-width: 1px;
+    border-color: rgb(223, 205, 179);
+}
+
+.footer-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    margin-bottom: 10px;
+    
+}
+
+
+.footer-container2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.name-container {
+    border: solid;
+    margin: 5px;
+    border-radius: 50px;
+    border-width: 2.5px;
+}
+
+.paragraph{
+    margin: 10px;
 }
